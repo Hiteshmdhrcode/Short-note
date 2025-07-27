@@ -1,107 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Love Quiz 💖</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I Love You</title>
   <style>
     body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #ffc3a0, #ffafbd);
+      background: url('images/bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
       text-align: center;
-      padding: 30px;
-      color: #333;
+      padding: 50px 20px;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
-      color: #e91e63;
-      font-size: 2.5em;
+      font-size: 3rem;
+      margin-top: 40px;
     }
 
-    .question {
-      background: #fff0f5;
-      margin: 20px auto;
-      padding: 15px;
-      border-radius: 15px;
-      max-width: 400px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    .heart {
+      font-size: 5rem;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px red; }
+      100% { text-shadow: 0 0 25px pink; }
     }
 
     button {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      font-size: 1em;
-      background: #f06292;
-      color: white;
+      padding: 15px 30px;
+      font-size: 1.2rem;
       border: none;
-      border-radius: 10px;
+      background: #ff69b4;
+      color: white;
+      border-radius: 25px;
+      margin-top: 20px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: transform 0.2s;
     }
 
     button:hover {
-      background: #ec407a;
+      transform: scale(1.1);
     }
 
-    #result {
-      display: none;
-      margin-top: 30px;
-      font-size: 1.3em;
-      color: #880e4f;
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 40px;
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 200px;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
     }
 
     audio {
-      display: none;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
+  <h1>I love you 💖</h1>
+  <div class="heart">❤️</div>
+  <button onclick="alert('Aww! I love you too! 🥰')">I love you too ❤️</button>
 
-  <h1>💘 How Much Do You Love Me?</h1>
-
-  <div class="question" id="q1">
-    <p>1. What reminds you of me the most?</p>
-    <button onclick="nextQuestion(1,1)">Your smile 😍</button>
-    <button onclick="nextQuestion(1,2)">Your voice 🎶</button>
-    <button onclick="nextQuestion(1,3)">Everything 💖</button>
+  <div class="gallery">
+    <img src="images/love1.jpg" alt="Love Pic 1" />
+    <img src="images/love2.jpg" alt="Love Pic 2" />
+    <img src="images/love3.jpg" alt="Love Pic 3" />
   </div>
 
-  <div class="question" id="q2" style="display:none">
-    <p>2. If we were in a movie, what genre would it be?</p>
-    <button onclick="nextQuestion(2,1)">Romantic comedy 🎥</button>
-    <button onclick="nextQuestion(2,2)">Fairy tale ✨</button>
-    <button onclick="nextQuestion(2,3)">Adventure with love 💞</button>
-  </div>
-
-  <div class="question" id="q3" style="display:none">
-    <p>3. How would you say “I love you” right now?</p>
-    <button onclick="showResult()">With a big hug 🤗</button>
-    <button onclick="showResult()">With a forehead kiss 😘</button>
-    <button onclick="showResult()">By holding your hand forever 💑</button>
-  </div>
-
-  <div id="result">
-    ❤️ You passed the love test!  
-    You're officially the reason I smile every day 🥹💘
-  </div>
-
-  <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/10/20/audio_74aa8e27f4.mp3?filename=romantic-melody-123680.mp3" type="audio/mpeg">
+  <audio controls autoplay loop>
+    <source src="music/romantic.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
-
-  <script>
-    function nextQuestion(current, answer) {
-      document.getElementById("q" + current).style.display = "none";
-      document.getElementById("q" + (current + 1)).style.display = "block";
-    }
-
-    function showResult() {
-      document.getElementById("q3").style.display = "none";
-      document.getElementById("result").style.display = "block";
-    }
-  </script>
-
 </body>
 </html>
+      
