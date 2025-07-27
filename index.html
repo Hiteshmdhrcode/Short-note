@@ -1,7 +1,7 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Just for You 💖</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <style>
@@ -18,23 +18,25 @@
       color: #ff4d6d;
     }
 
-    .heart-photo {
-      width: 250px;
-      height: 250px;
-      background: url("cutie.jpg") no-repeat center/cover;
-      clip-path: path('M 50 15 C 50 0, 90 0, 90 35 C 90 60, 50 90, 50 90 C 50 90, 10 60, 10 35 C 10 0, 50 0, 50 15 Z');
+    .glow-photo {
+      width: 280px;
+      height: auto;
+      border-radius: 25px;
+      box-shadow: 0 0 30px #ff7eb9, 0 0 60px #ff65a3;
       animation: glowPulse 2s infinite;
       margin: 30px auto;
+      display: block;
+      border: 5px solid white;
     }
 
     @keyframes glowPulse {
-      0% { box-shadow: 0 0 25px #ff7eb9, 0 0 50px #ff65a3; }
-      50% { box-shadow: 0 0 40px #ff7eb9, 0 0 80px #ff65a3; }
-      100% { box-shadow: 0 0 25px #ff7eb9, 0 0 50px #ff65a3; }
+      0% { box-shadow: 0 0 30px #ff7eb9, 0 0 60px #ff65a3; }
+      50% { box-shadow: 0 0 45px #ff7eb9, 0 0 90px #ff65a3; }
+      100% { box-shadow: 0 0 30px #ff7eb9, 0 0 60px #ff65a3; }
     }
 
     .btn {
-      padding: 10px 25px;
+      padding: 12px 28px;
       font-size: 18px;
       background-color: #ff4d6d;
       color: white;
@@ -42,8 +44,8 @@
       border-radius: 30px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
       cursor: pointer;
-      margin-bottom: 15px;
       animation: pulse 2s infinite;
+      margin: 10px 0;
     }
 
     @keyframes pulse {
@@ -56,13 +58,12 @@
       margin-top: 40px;
     }
 
-    .quiz p {
+    .quiz p, .wish p, .puzzle p, .wheel p {
       font-size: 1.1em;
       color: #ff3366;
       margin-bottom: 8px;
     }
 
-    /* Floating hearts */
     .heart {
       position: fixed;
       width: 20px;
@@ -85,8 +86,14 @@
     .heart::after { left: -10px; top: 0; }
 
     @keyframes floatUp {
-      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
-      100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-800px) rotate(45deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -95,15 +102,16 @@
   <h1>💖 Just for You</h1>
   <p>You are the smile to my day and the beat to my heart. Surprise! 😚</p>
 
-  <!-- Glowing Heart Photo -->
-  <div class="heart-photo"></div>
+  <!-- Glowing Rounded Photo -->
+  <img src="cutie.jpg" alt="My Love" class="glow-photo" />
 
   <!-- I Love You Button -->
-  <button class="btn" onclick="alert('I love you so much 💖')">I Love You 💘</button>
+  <button class="btn" onclick="alert('I love you sooo much 💖')">I Love You 💖</button>
 
-  <!-- Quiz Section -->
+  <!-- Love Quiz Section -->
   <div class="quiz">
     <h2>💖 Cute Love Quiz 💖</h2>
+
     <p>1️⃣ When did we first start talking?</p>
     <button class="btn" onclick="alert('A day my life got brighter 💫')">Answer</button>
 
@@ -120,16 +128,16 @@
     <button class="btn" onclick="alert('More than every star you see tonight 💖🌌')">Answer</button>
   </div>
 
-  <!-- Make a Wish -->
+  <!-- Make a Wish Section -->
   <div class="wish">
     <h2>🌟 Make a Wish Under the Stars</h2>
-    <button class="btn" onclick="alert('Your wish is already granted — ME! ✨')">Make a Wish 🌠</button>
+    <button class="btn" onclick="alert('Close your eyes and wish... I hope it comes true 🌠')">Make a Wish 🌠</button>
   </div>
 
-  <!-- Puzzle of Us -->
+  <!-- Puzzle of Us Section -->
   <div class="puzzle">
     <h2>🧩 Puzzle of Us</h2>
-    <button class="btn" onclick="alert('Each piece is us — perfectly fitting 💞')">Click to Complete</button>
+    <button class="btn" onclick="alert('Each moment with you completes my heart 🧩❤️')">Click to Complete</button>
   </div>
 
   <!-- Love Wheel -->
@@ -138,20 +146,8 @@
     <button class="btn" onclick="spinLove()">Spin 💫</button>
   </div>
 
-  <!-- Love Spin Script -->
+  <!-- Floating Hearts Animation -->
   <script>
-    function spinLove() {
-      const surprises = [
-        "You're my favorite notification 💌",
-        "I’d choose you again and again 💍",
-        "You're my everything 🥹❤️",
-        "Can’t stop thinking about you 💭",
-        "You're the reason I smile daily 🌞"
-      ];
-      alert(surprises[Math.floor(Math.random() * surprises.length)]);
-    }
-
-    // Floating hearts
     function createHeart() {
       const heart = document.createElement('div');
       heart.className = 'heart';
@@ -160,9 +156,19 @@
       setTimeout(() => heart.remove(), 5000);
     }
     setInterval(createHeart, 500);
+
+    function spinLove() {
+      const messages = [
+        "You're my lucky charm 🍀",
+        "Forever yours 💍",
+        "Hug coming your way 🤗",
+        "Kiss attack 😘",
+        "You’re my favorite person 🌈",
+        "Always in my heart 💓"
+      ];
+      alert(messages[Math.floor(Math.random() * messages.length)]);
+    }
   </script>
 
 </body>
 </html>
-
-      
