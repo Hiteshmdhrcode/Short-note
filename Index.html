@@ -1,38 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For You 💖</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Love Quiz 💖</title>
   <style>
     body {
-      background: #fff0f5;
       font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffc3a0, #ffafbd);
       text-align: center;
-      padding: 40px;
+      padding: 30px;
+      color: #333;
     }
+
     h1 {
+      color: #e91e63;
       font-size: 2.5em;
-      color: #ff69b4;
     }
-    p {
-      font-size: 1.2em;
-      color: #555;
-      margin: 20px 0;
+
+    .question {
+      background: #fff0f5;
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 15px;
+      max-width: 400px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-    img {
-      max-width: 90%;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1em;
+      background: #f06292;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ec407a;
+    }
+
+    #result {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.3em;
+      color: #880e4f;
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Hey Love 💕</h1>
-  <p>You are the reason I smile every day.  
-  I made this just to make you smile too 😊</p>
-  <img src="heart.jpg" alt="For you" />
-  <p>Forever yours,  
-  <br>— Hitesh ❤️</p>
+
+  <h1>💘 How Much Do You Love Me?</h1>
+
+  <div class="question" id="q1">
+    <p>1. What reminds you of me the most?</p>
+    <button onclick="nextQuestion(1,1)">Your smile 😍</button>
+    <button onclick="nextQuestion(1,2)">Your voice 🎶</button>
+    <button onclick="nextQuestion(1,3)">Everything 💖</button>
+  </div>
+
+  <div class="question" id="q2" style="display:none">
+    <p>2. If we were in a movie, what genre would it be?</p>
+    <button onclick="nextQuestion(2,1)">Romantic comedy 🎥</button>
+    <button onclick="nextQuestion(2,2)">Fairy tale ✨</button>
+    <button onclick="nextQuestion(2,3)">Adventure with love 💞</button>
+  </div>
+
+  <div class="question" id="q3" style="display:none">
+    <p>3. How would you say “I love you” right now?</p>
+    <button onclick="showResult()">With a big hug 🤗</button>
+    <button onclick="showResult()">With a forehead kiss 😘</button>
+    <button onclick="showResult()">By holding your hand forever 💑</button>
+  </div>
+
+  <div id="result">
+    ❤️ You passed the love test!  
+    You're officially the reason I smile every day 🥹💘
+  </div>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/20/audio_74aa8e27f4.mp3?filename=romantic-melody-123680.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function nextQuestion(current, answer) {
+      document.getElementById("q" + current).style.display = "none";
+      document.getElementById("q" + (current + 1)).style.display = "block";
+    }
+
+    function showResult() {
+      document.getElementById("q3").style.display = "none";
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+
 </body>
 </html>
