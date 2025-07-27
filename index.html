@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+  
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -17,15 +18,14 @@
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 3em;
       color: #ff4d6d;
       margin-bottom: 0.2em;
     }
 
-    /* Typewriter effect on the main message */
     .typewriter {
       display: inline-block;
-      font-size: 1.3em;
+      font-size: 1.5em;
       color: #ff4d6d;
       white-space: nowrap;
       overflow: hidden;
@@ -42,16 +42,17 @@
       50% { border-color: transparent }
     }
 
-    /* Heart-shaped glowing photo */
+    /* Big heart-shaped glowing photo with rainbow glow */
     .glow-photo {
-      width: 200px;
-      height: 200px;
+      width: 320px;
+      height: 320px;
       margin: 30px auto;
       display: block;
       position: relative;
-      filter: drop-shadow(0 0 10px #ff6f91);
       cursor: pointer;
-      animation: sparkle 3s infinite;
+      border-radius: 50% / 50%;
+
+      /* Heart clip path */
       clip-path: polygon(
         50% 0%,
         84% 14%,
@@ -62,32 +63,52 @@
         0% 42%,
         16% 14%
       );
-      border: 8px solid #ffb6c1;
+
+      border: 10px solid #ffb6c1;
       background: radial-gradient(circle at center, #fff0f5, #ffe4e1);
-      transition: transform 0.3s ease-in-out;
       object-fit: cover;
+      
+      /* Rainbow glow animation */
+      box-shadow:
+        0 0 15px 5px #ff4d6d,
+        0 0 30px 10px #ff65a3,
+        0 0 45px 15px #ff7eb9;
+      animation: rainbowGlow 4s infinite alternate ease-in-out;
+
+      transition: transform 0.3s ease-in-out;
     }
     .glow-photo:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 20px #ff4d6d);
+      transform: scale(1.08);
+      box-shadow:
+        0 0 20px 8px #ff2e6d,
+        0 0 40px 15px #ff4d6d,
+        0 0 60px 25px #ff7eb9;
     }
 
-    @keyframes sparkle {
+    @keyframes rainbowGlow {
       0% {
-        filter: drop-shadow(0 0 10px #ff6f91);
+        box-shadow:
+          0 0 15px 5px #ff4d6d,
+          0 0 30px 10px #ff65a3,
+          0 0 45px 15px #ff7eb9;
       }
       50% {
-        filter: drop-shadow(0 0 25px #ff69b4);
+        box-shadow:
+          0 0 20px 10px #ff2e6d,
+          0 0 35px 15px #ff4d6d,
+          0 0 60px 25px #ff7eb9;
       }
       100% {
-        filter: drop-shadow(0 0 10px #ff6f91);
+        box-shadow:
+          0 0 15px 5px #ff4d6d,
+          0 0 30px 10px #ff65a3,
+          0 0 45px 15px #ff7eb9;
       }
     }
 
-    /* Bouncing and glowing button */
     .btn {
-      padding: 10px 25px;
-      font-size: 18px;
+      padding: 12px 30px;
+      font-size: 20px;
       background-color: #ff4d6d;
       color: white;
       border: none;
@@ -109,15 +130,42 @@
     .quiz {
       margin-top: 40px;
     }
-
     .quiz p {
-      font-size: 1.1em;
+      font-size: 1.2em;
       color: #ff3366;
       margin-bottom: 8px;
     }
-
     .quiz button {
       margin-bottom: 20px;
+    }
+
+    .love-letter {
+      width: 280px;
+      height: 170px;
+      margin: 50px auto 0;
+      background: #ffe0ec;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      transition: height 0.5s ease;
+    }
+    .love-letter:hover {
+      height: 310px;
+      box-shadow: 0 10px 30px rgba(255, 77, 109, 0.7);
+    }
+    .letter-content {
+      opacity: 0;
+      color: #ff4d6d;
+      font-size: 1.2em;
+      padding: 25px;
+      transition: opacity 0.5s ease 0.5s;
+      line-height: 1.4em;
+      user-select: none;
+    }
+    .love-letter:hover .letter-content {
+      opacity: 1;
     }
 
     /* Floating hearts */
@@ -128,8 +176,8 @@
       background: red;
       transform: rotate(45deg);
       animation: floatUp 5s linear infinite, pulseHeart 1.5s infinite;
+      z-index: 10;
     }
-
     .heart::before, .heart::after {
       content: '';
       position: absolute;
@@ -138,17 +186,14 @@
       background: red;
       border-radius: 50%;
     }
-
     .heart::before {
       top: -10px;
       left: 0;
     }
-
     .heart::after {
       left: -10px;
       top: 0;
     }
-
     @keyframes floatUp {
       0% {
         transform: translateY(0) rotate(45deg);
@@ -177,7 +222,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
     @keyframes fallPetal {
       0% {
         transform: translateY(-20px) rotate(0deg);
@@ -189,40 +233,92 @@
       }
     }
 
-    /* Love letter that unfolds */
-    .love-letter {
-      width: 250px;
-      height: 150px;
-      margin: 50px auto 0;
-      background: #ffe0ec;
-      border-radius: 20px;
-      box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
-      position: relative;
+    /* Puzzle styles */
+    #puzzle {
+      margin: 40px auto;
+      max-width: 320px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+    }
+    #puzzle div {
+      background-color: #ff9aae;
+      border-radius: 12px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.7em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90px;
       cursor: pointer;
-      overflow: hidden;
-      transition: height 0.5s ease;
+      user-select: none;
+      box-shadow: 0 2px 5px rgba(255, 77, 109, 0.7);
+      transition: background-color 0.3s ease;
     }
-    .love-letter:hover {
-      height: 280px;
-      box-shadow: 0 10px 30px rgba(255, 77, 109, 0.7);
+    #puzzle div.correct {
+      background-color: #ff4d6d;
+      box-shadow: 0 0 12px #ff4d6d;
     }
-    .letter-content {
-      opacity: 0;
-      color: #ff4d6d;
-      font-size: 1.1em;
-      padding: 20px;
-      transition: opacity 0.5s ease 0.5s;
+    #puzzle div.empty {
+      background-color: transparent;
+      cursor: default;
+      box-shadow: none;
     }
-    .love-letter:hover .letter-content {
-      opacity: 1;
+
+    /* Spin the Love Wheel */
+    #wheelContainer {
+      margin: 30px auto;
+      width: 300px;
+      height: 300px;
+      position: relative;
+    }
+    #wheel {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 10px solid #ff4d6d;
+      box-shadow: 0 0 20px #ff4d6d;
+      position: relative;
+      transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+    #spinBtn {
+      margin-top: 15px;
+      padding: 12px 25px;
+      font-size: 20px;
+      background-color: #ff4d6d;
+      border: none;
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 77, 109, 0.6);
+      transition: box-shadow 0.3s ease;
+    }
+    #spinBtn:hover {
+      box-shadow: 0 0 25px #ff4d6d, 0 0 40px #ff7890;
+    }
+    #pointer {
+      width: 0; 
+      height: 0; 
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 40px solid #ff4d6d;
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      filter: drop-shadow(0 0 8px #ff4d6d);
+      z-index: 20;
     }
   </style>
 </head>
 <body>
 
   <h1>💖 Just for You</h1>
-
-  <!-- Typewriter message -->
   <div class="typewriter">You are the smile to my day and the beat to my heart. Surprise! 😚</div>
 
   <!-- Heart-shaped glowing photo -->
@@ -251,6 +347,24 @@
     <button class="btn" onclick="alert('More than every star you see tonight 💖🌌')">Answer</button>
   </div>
 
+  <!-- Puzzle of Us -->
+  <div>
+    <h2>🧩 Puzzle of Us</h2>
+    <div id="puzzle"></div>
+    <button class="btn" onclick="resetPuzzle()">Reset Puzzle</button>
+  </div>
+
+  <!-- Spin the Love Wheel -->
+  <div>
+    <h2>🎡 Spin the Love Wheel</h2>
+    <div id="wheelContainer">
+      <div id="pointer"></div>
+      <div id="wheel"></div>
+    </div>
+    <button id="spinBtn" class="btn">Spin 💫</button>
+    <p id="spinResult" style="color:#ff4d6d; font-weight:bold; margin-top:10px;"></p>
+  </div>
+
   <!-- Love letter that unfolds -->
   <div class="love-letter" onclick="alert('Forever yours, Your Hitesh ❤️')">
     <div class="letter-content">
@@ -261,8 +375,8 @@
     </div>
   </div>
 
-  <!-- Floating Hearts Script -->
   <script>
+    // Floating Hearts
     function createHeart() {
       const heart = document.createElement('div');
       heart.className = 'heart';
@@ -272,7 +386,7 @@
     }
     setInterval(createHeart, 500);
 
-    // Create falling petals
+    // Falling Petals
     function createPetal() {
       const petal = document.createElement('div');
       petal.className = 'petal';
@@ -283,7 +397,85 @@
       setTimeout(() => petal.remove(), 10000);
     }
     setInterval(createPetal, 700);
-  </script>
 
-</body>
-</html>
+    // Puzzle Game Logic
+    const puzzle = document.getElementById('puzzle');
+    let tiles = [];
+    let emptyIndex = 8; // last tile is empty in 3x3 grid
+
+    function createPuzzle() {
+      tiles = [];
+      puzzle.innerHTML = '';
+      for(let i = 1; i <= 8; i++) {
+        const tile = document.createElement('div');
+        tile.textContent = i;
+        tile.addEventListener('click', () => moveTile(i - 1));
+        puzzle.appendChild(tile);
+        tiles.push(tile);
+      }
+      // empty tile
+      const emptyTile = document.createElement('div');
+      emptyTile.classList.add('empty');
+      puzzle.appendChild(emptyTile);
+      tiles.push(emptyTile);
+    }
+
+    function canMove(index) {
+      const moves = [emptyIndex - 1, emptyIndex + 1, emptyIndex - 3, emptyIndex + 3];
+      // Prevent moving tiles wrapping around rows horizontally
+      if(index === emptyIndex - 1 && emptyIndex % 3 === 0) return false;
+      if(index === emptyIndex + 1 && (emptyIndex + 1) % 3 === 0) return false;
+      return moves.includes(index);
+    }
+
+    function moveTile(index) {
+      if(canMove(index)) {
+        // Swap textContent
+        [tiles[index].textContent, tiles[emptyIndex].textContent] = [tiles[emptyIndex].textContent, tiles[index].textContent];
+        tiles[emptyIndex].classList.remove('correct');
+        tiles[index].classList.add('correct');
+        emptyIndex = index;
+        if(checkWin()) alert("You completed the Puzzle! 💖");
+      }
+    }
+
+    function checkWin() {
+      for(let i = 0; i < 8; i++) {
+        if(tiles[i].textContent != i + 1) return false;
+      }
+      return true;
+    }
+
+    function resetPuzzle() {
+      createPuzzle();
+      emptyIndex = 8;
+    }
+
+    createPuzzle();
+
+    // Spin the Love Wheel Logic
+    const wheel = document.getElementById('wheel');
+    const spinBtn = document.getElementById('spinBtn');
+    const spinResult = document.getElementById('spinResult');
+    const segments = [
+      "Kiss 💋",
+      "Hug 🤗",
+      "Compliment 🥰",
+      "Dance 💃",
+      "Love Note 💌",
+      "Surprise! 🎁",
+      "Date Night 🌹",
+      "Sweet Whisper 😘"
+    ];
+    let deg = 0;
+
+    spinBtn.addEventListener('click', () => {
+      spinResult.textContent = '';
+      const spins = Math.floor(Math.random() * 5) + 5; // between 5-9 spins
+      deg += spins * 360 + Math.floor(Math.random() * 360);
+      wheel.style.transition = 'transform 4s cubic-bezier(0.25, 0.1, 0.25, 1)';
+      wheel.style.transform = `rotate(${deg}deg)`;
+      spinBtn.disabled = true;
+
+      setTimeout(() => {
+        spinBtn.disabled = false;
