@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -54,7 +54,7 @@
       100% { transform: scale(1); }
     }
 
-    .quiz, .wish, .puzzle, .wheel {
+    .quiz, .wish, .puzzle, .wheel, .final-message {
       margin-top: 40px;
     }
 
@@ -86,14 +86,15 @@
     .heart::after { left: -10px; top: 0; }
 
     @keyframes floatUp {
-      0% {
-        transform: translateY(0) rotate(45deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-800px) rotate(45deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
+    }
+
+    .final-message p {
+      font-size: 1.3em;
+      color: #d6336c;
+      margin-top: 30px;
+      padding: 0 20px;
     }
   </style>
 </head>
@@ -102,16 +103,15 @@
   <h1>💖 Just for You</h1>
   <p>You are the smile to my day and the beat to my heart. Surprise! 😚</p>
 
-  <!-- Glowing Rounded Photo -->
+  <!-- Glowing Photo -->
   <img src="cutie.jpg" alt="My Love" class="glow-photo" />
 
   <!-- I Love You Button -->
   <button class="btn" onclick="alert('I love you sooo much 💖')">I Love You 💖</button>
 
-  <!-- Love Quiz Section -->
+  <!-- Love Quiz -->
   <div class="quiz">
     <h2>💖 Cute Love Quiz 💖</h2>
-
     <p>1️⃣ When did we first start talking?</p>
     <button class="btn" onclick="alert('A day my life got brighter 💫')">Answer</button>
 
@@ -128,13 +128,13 @@
     <button class="btn" onclick="alert('More than every star you see tonight 💖🌌')">Answer</button>
   </div>
 
-  <!-- Make a Wish Section -->
+  <!-- Make a Wish -->
   <div class="wish">
     <h2>🌟 Make a Wish Under the Stars</h2>
     <button class="btn" onclick="alert('Close your eyes and wish... I hope it comes true 🌠')">Make a Wish 🌠</button>
   </div>
 
-  <!-- Puzzle of Us Section -->
+  <!-- Puzzle of Us -->
   <div class="puzzle">
     <h2>🧩 Puzzle of Us</h2>
     <button class="btn" onclick="alert('Each moment with you completes my heart 🧩❤️')">Click to Complete</button>
@@ -146,7 +146,19 @@
     <button class="btn" onclick="spinLove()">Spin 💫</button>
   </div>
 
-  <!-- Floating Hearts Animation -->
+  <!-- Final Message -->
+  <div class="final-message">
+    <h2>💌 Final Message</h2>
+    <p>
+      My love, you mean the world to me. Every smile you give lights up my heart.  
+      I made this little page just to remind you how special you are.  
+      You’re my best friend, my happiness, and my forever.  
+      I can’t wait for all the memories we’ll create.  
+      I love you more than words can ever say. ❤️
+    </p>
+  </div>
+
+  <!-- Floating Hearts -->
   <script>
     function createHeart() {
       const heart = document.createElement('div');
