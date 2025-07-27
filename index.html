@@ -1,95 +1,222 @@
-<!DOCTYPE html>
-<html lang="en">
+
+      <!DOCTYPE html>
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>I Love You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Just for You 💖</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: url('images/bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
+      background: #fff0f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #d6336c;
       text-align: center;
-      padding: 50px 20px;
-      animation: fadeIn 2s ease-in;
+      padding: 30px;
+      margin: 0;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     h1 {
-      font-size: 3rem;
-      margin-top: 40px;
+      font-size: 3em;
+      margin-bottom: 0.2em;
     }
-
-    .heart {
-      font-size: 5rem;
-      animation: glow 1.5s infinite alternate;
+    p {
+      font-size: 1.2em;
+      margin-top: 0;
     }
-
-    @keyframes glow {
-      0% { text-shadow: 0 0 10px red; }
-      100% { text-shadow: 0 0 25px pink; }
-    }
-
-    button {
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      border: none;
-      background: #ff69b4;
-      color: white;
-      border-radius: 25px;
+    img {
+      width: 280px;
+      border-radius: 20px;
       margin-top: 20px;
+      box-shadow: 0 0 20px #ffb6c1;
       cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    button:hover {
-      transform: scale(1.1);
-    }
-
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 40px;
-      gap: 15px;
-    }
-
-    .gallery img {
-      width: 200px;
-      border-radius: 15px;
       transition: transform 0.3s ease;
     }
-
-    .gallery img:hover {
+    img:hover {
       transform: scale(1.05);
     }
-
-    audio {
+    button {
+      margin-top: 15px;
+      background-color: #ff69b4;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.2em;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255,105,180,0.6);
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #e75480;
+    }
+    .response {
+      margin-top: 15px;
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #ff4d6d;
+    }
+    .hearts {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      user-select: none;
+      overflow: visible;
+      z-index: 9999;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff4d6d;
+      transform: rotate(-45deg);
+      animation: floatUp 4s linear forwards;
+      opacity: 0.8;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff4d6d;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(-45deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-200px) translateX(30px) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+    /* Quiz styles */
+    #quiz {
       margin-top: 30px;
+      background: #ffe6f0;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #ffb6c1;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #a6365a;
+    }
+    #quiz h2 {
+      margin-bottom: 15px;
+    }
+    .quiz-question {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .quiz-options button {
+      background: #ff69b4;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .quiz-options button:hover {
+      background-color: #e75480;
+    }
+    #quiz-result {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 1.3em;
     }
   </style>
 </head>
 <body>
-  <h1>I love you 💖</h1>
-  <div class="heart">❤️</div>
-  <button onclick="alert('Aww! I love you too! 🥰')">I love you too ❤️</button>
+  <h1>💖 Just for You</h1>
+  <p>You are the smile to my day and the beat to my heart.</p>
+  <p><strong>Surprise!</strong> I just wanted to remind you how special you are.</p>
+  <img src="cutie.jpg" alt="For you" title="Click to enlarge" onclick="window.open('cutie.jpg', '_blank')" />
+  
+  <p style="font-size: 1.8em; margin-top: 40px;">I love you ❤️</p>
+  <button id="replyBtn">Respond: I love you too 💖</button>
+  <div id="responseMsg" class="response"></div>
 
-  <div class="gallery">
-    <img src="images/love1.jpg" alt="Love Pic 1" />
-    <img src="images/love2.jpg" alt="Love Pic 2" />
-    <img src="images/love3.jpg" alt="Love Pic 3" />
+  <!-- Quiz Section -->
+  <div id="quiz">
+    <h2>💕 How well do you know me? 💕</h2>
+    <div class="quiz-question" id="question">What is my favorite color?</div>
+    <div class="quiz-options">
+      <button data-answer="wrong">Blue</button>
+      <button data-answer="correct">Pink</button>
+      <button data-answer="wrong">Green</button>
+      <button data-answer="wrong">Yellow</button>
+    </div>
+    <div id="quiz-result"></div>
   </div>
 
-  <audio controls autoplay loop>
-    <source src="music/romantic.mp3" type="audio/mpeg">
+  <div class="hearts"></div>
+
+  <!-- Background music (soft love song) -->
+  <audio id="bg-music" autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/28/audio_87b3760131.mp3?filename=sweet-love-13729.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
+
+  <script>
+    // Respond button functionality
+    const replyBtn = document.getElementById('replyBtn');
+    const responseMsg = document.getElementById('responseMsg');
+
+    replyBtn.addEventListener('click', () => {
+      responseMsg.textContent = "I love you too ❤️";
+      replyBtn.disabled = true;
+      replyBtn.textContent = "Sent!";
+    });
+
+    // Floating hearts animation
+    const heartsContainer = document.querySelector('.hearts');
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = (Math.random() * 100) + 'px';
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }
+
+    setInterval(createHeart, 300);
+
+    // Quiz functionality
+    const quiz = document.getElementById('quiz');
+    const questionEl = document.getElementById('question');
+    const options = quiz.querySelectorAll('.quiz-options button');
+    const result = document.getElementById('quiz-result');
+
+    options.forEach(button => {
+      button.addEventListener('click', () => {
+        if (button.dataset.answer === 'correct') {
+          result.textContent = "🎉 Correct! You know me well! ❤️";
+          result.style.color = '#d6336c';
+        } else {
+          result.textContent = "❌ Oops, try again!";
+          result.style.color = '#a6365a';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-      
