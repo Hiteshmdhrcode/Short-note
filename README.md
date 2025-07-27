@@ -1,4 +1,3 @@
-
 # 💖 Just for You
 
 Hey love,  
@@ -9,7 +8,7 @@ You are the smile to my day and the beat to my heart.
 
 ## 💌 Click below for your surprise:
 
-[![Just for you](https://github.com/yourusername/sweet-note/blob/main/love.jpg?raw=true)](https://github.com/yourusername/sweet-note/blob/main/love.jpg?raw=true)
+[![Click Me](https://raw.githubusercontent.com/Hiteshmdhrcode/sweet-note/main/cutie.jpg)](https://raw.githubusercontent.com/Hiteshmdhrcode/sweet-note/main/cutie.jpg)
 
 ---
 
