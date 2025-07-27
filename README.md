@@ -8,8 +8,7 @@ You are the smile to my day and the beat to my heart.
 
 ## 💌 Click below for your surprise:
 
-[![Click Me](https://raw.githubusercontent.com/Hiteshmdhrcode/sweet-note/main/cutie.jpg)](https://raw.githubusercontent.com/Hiteshmdhrcode/sweet-note/main/cutie.jpg)
-
+[![Click Me](https://raw.githubusercontent.com/Hiteshmdhrcode/Short-note/main/cutie.jpg)](https://raw.githubusercontent.com/Hiteshmdhrcode/Short-note/main/cutie.jpg)
 ---
 
 Forever yours,  
